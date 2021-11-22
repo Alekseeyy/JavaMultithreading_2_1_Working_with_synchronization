@@ -25,10 +25,10 @@ public class Dealer {
     public void receiveCar() {
         for (int i = 0; i < CARS; i++) {
             try {
-                Thread.sleep(RECEIVE_TIME);
-                cars.add(new Car());
-                System.out.println("Производитель " + Thread.currentThread().getName() + " выпустил 1 авто");
                 synchronized (this) {
+                    Thread.sleep(RECEIVE_TIME);
+                    cars.add(new Car());
+                    System.out.println("Производитель " + Thread.currentThread().getName() + " выпустил 1 авто");
                     notify();
                 }
             } catch (InterruptedException e) {
